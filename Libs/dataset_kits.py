@@ -45,7 +45,8 @@ def dataset_spliter(df, root, duration=30, overlap=0.1, sr=512):
         mat_data = loadmat(p)
       last_path = path
 
-      signal = mat_data['data'][1:33, 0, :]  # Extract first 32 channels
+      ch = list(range(1,33)) + [34,35]
+      signal = mat_data['data'][ch, 0, :]  # Extract first 32 channels
 
       # Iterate through the signal with overlap and segment into epochs
       i = start
